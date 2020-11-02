@@ -150,10 +150,12 @@ namespace Helper
 
     void checkVkResult(VkResult result)
     {
+#ifdef CHECKVKRESULT
 	    if (result != VK_SUCCESS)
 	    {
 		    throw std::runtime_error("Check failed on line stringify(__LINE__) in file stringify(__FILE__)");
 	    }
+#endif
     }
 
 }
