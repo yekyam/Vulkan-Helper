@@ -149,7 +149,7 @@ namespace Helper
     }
 #ifdef CHECKVKRESULT
     #define checkVkResult(X)\
-       if (X == VK_SUCCESS) \
+       if (X != VK_SUCCESS) \
        {  char errorMsg[128]; \
             sprintf_s(errorMsg, "Error in file: %s on line: %d", __FILE__, __LINE__ ); \
             throw std::runtime_error(errorMsg); \
