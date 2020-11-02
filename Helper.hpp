@@ -147,16 +147,13 @@ namespace Helper
         }
         return shaderModule; 
     }
-
-    void checkVkResult(VkResult result)
-    {
 #ifdef CHECKVKRESULT
-	    if (result != VK_SUCCESS)
-	    {
-		    throw std::runtime_error("Check failed on line stringify(__LINE__) in file stringify(__FILE__)");
-	    }
+    #define checkVkResult(X)\
+       if (X == VK_SUCCESS) \
+       {  char errorMsg[128]; \
+            sprintf_s(errorMsg, "Error in file: %s on line: %d", __FILE__, __LINE__ ); \
+            throw std::runtime_error(errorMsg); \
+       }
 #endif
-    }
-
 }
 #endif
