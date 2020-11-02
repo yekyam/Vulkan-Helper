@@ -1,3 +1,9 @@
+#ifndef VKHELPER_HPP
+#define VKHELPER_HPP
+
+#define stringify(X) str(X)
+#define str(X) #X
+
 //Thin collection of classes to assist in:
 //	Checking validation layer support
 //	Listing both instance extensions and device extensions
@@ -141,5 +147,14 @@ namespace Helper
         }
         return shaderModule; 
     }
-}
 
+    void checkVkResult(VkResult result)
+    {
+	    if (result != VK_SUCCESS)
+	    {
+		    throw std::runtime_error("Check failed on line stringify(__LINE__) in file stringify(__FILE__)");
+	    }
+    }
+
+}
+#endif
